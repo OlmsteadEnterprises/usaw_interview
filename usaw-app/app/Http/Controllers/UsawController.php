@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usaw;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -31,11 +33,20 @@ class UsawController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $usaw = new Usaw();
+        $usaw->name = $request->usaw['name'];
+        $usaw->color = $request->usaw['color'];
+        $usaw->consent_statement = (bool)$request->usaw['consent_statement'];
+        $usaw->save();
+
+        return response()->json([
+            'message' => 'Form Submitted!'
+        ]);
     }
 
     /**
