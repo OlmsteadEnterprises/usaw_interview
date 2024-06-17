@@ -10,6 +10,8 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('/usaw')->name('usaw.')->group(function() {
 
-    Route::post('/', [UsawController::class, 'store']);
+    Route::get('/', [UsawController::class, 'index'])->name('index');
+
+    Route::post('/', [UsawController::class, 'store'])->name('store');
 
 });

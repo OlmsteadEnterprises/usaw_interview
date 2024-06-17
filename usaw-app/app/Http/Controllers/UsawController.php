@@ -16,12 +16,14 @@ class UsawController extends Controller
     public function viewIndex() {
         return Inertia::render('USAW/Usaw');
     }
+
     /**
-     * Display a listing of the resource.
+     * @return JsonResponse
      */
     public function index()
     {
-        //
+        $usaw_data = Usaw::all();
+        return response()->json($usaw_data);
     }
 
     /**
