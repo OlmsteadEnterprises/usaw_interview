@@ -76,10 +76,15 @@ class UsawController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Usaw $usaw
+     * @return JsonResponse
      */
-    public function destroy(string $id)
+    public function destroy(Usaw $usaw)
     {
-        //
+        $usaw->delete();
+
+        return response()->json([
+            'message' => 'Data Deleted!'
+        ]);
     }
 }

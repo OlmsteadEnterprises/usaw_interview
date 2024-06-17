@@ -14,4 +14,10 @@ Route::prefix('/usaw')->name('usaw.')->group(function() {
 
     Route::post('/', [UsawController::class, 'store'])->name('store');
 
+    Route::prefix('/{usaw}')->name('update.')->group(function() {
+
+        Route::delete('/', [UsawController::class, 'destroy'])->name('destroy');
+
+    });
+
 });
